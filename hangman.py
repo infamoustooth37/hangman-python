@@ -1,11 +1,26 @@
-wordToGuess = input("Enter a word to guess ")
+import random
+
+def read_specific_line(file_path, line_number):
+    with open(file_path, 'r') as file:
+        lines = file.readlines()
+        if 0 < line_number <= len(lines):
+            return lines[line_number - 1]
+        else:
+            return "Line number out of range."
+
+wordToGuess = ""
 secret = ""
-lives = 5
+lives = 10
 guessed = False
 charFound = False
+lettersGuessed = []
+
+wordFilePath = "words.txt"
+randomLine = random.randint(1,100)
+wordToGuess = read_specific_line(wordFilePath,randomLine)
 
 for i in wordToGuess:
-    secret = secret + "-"
+    secret = secret + "_"
 
 print(secret)
 
@@ -29,6 +44,7 @@ while guessed == False:
             print("The word was " + secret)
             guessed = True
         if lives <= 0:
-            print("You lost all your lives - you lost")
+            print("You lost all your lives - you lose")
+            print("The word was " + wordToGuess)
             break
         

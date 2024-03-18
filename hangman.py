@@ -4,7 +4,7 @@ def read_specific_line(file_path, line_number):
     with open(file_path, 'r') as file:
         lines = file.readlines()
         if 0 < line_number <= len(lines):
-            return lines[line_number - 1]
+            return lines[line_number - 1].strip()
         else:
             return "Line number out of range."
 
